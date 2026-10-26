@@ -1,0 +1,12 @@
+module github.com/alca-lang/apm
+
+go 1.26.0
+
+require (
+	github.com/alca-lang/alca v0.0.0
+	golang.org/x/term v0.47.0
+)
+
+require golang.org/x/sys v0.49.0 // indirect
+
+replace github.com/alca-lang/alca => C:\Users\geekom\Desktop\Alca
