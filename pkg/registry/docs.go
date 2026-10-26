@@ -43,6 +43,17 @@ type DocTopic struct {
 
 var docTopics = []DocTopic{
 	{
+		ID:         "why-alca",
+		Category:   "getting_started",
+		CatTitleRU: "Начало работы",
+		CatTitleEN: "Getting Started",
+		TitleRU:    "Зачем Alca? (vs Python, Go, Deno)",
+		TitleEN:    "Why Alca? (vs Python, Go, Deno)",
+		DescRU:     "Сравнение архитектуры, синтаксиса, скорости и сценариев применения с Python, Go и Deno",
+		DescEN:     "Direct architectural, syntactic, and performance comparison with Python, Go, and Deno",
+		Icon:       "help",
+	},
+	{
 		ID:         "handbook",
 		Category:   "getting_started",
 		CatTitleRU: "Начало работы",
@@ -129,6 +140,17 @@ var docTopics = []DocTopic{
 		DescRU:     "Сборка статических бинарников под Linux, Windows и macOS без внешних SDK",
 		DescEN:     "Targeting Linux, Windows, and macOS without toolchain dependencies",
 		Icon:       "globe",
+	},
+	{
+		ID:         "benchmarks",
+		Category:   "advanced",
+		CatTitleRU: "Продвинутый уровень",
+		CatTitleEN: "Advanced Topics",
+		TitleRU:    "Бенчмарки и производительность",
+		TitleEN:    "Benchmarks & Performance",
+		DescRU:     "Реальные тесты скорости вычислений, запуска, потребления памяти и пропускной способности",
+		DescEN:     "Reproducible compute, startup, memory footprint, and HTTP throughput benchmarks",
+		Icon:       "gauge",
 	},
 	{
 		ID:         "bug-report",

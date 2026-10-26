@@ -2178,12 +2178,12 @@
 
       <!-- Feature Highlights -->
       <div class="features-grid">
-        <div class="feature-box">
+        <div class="feature-box" onclick="navigate('docs', 'benchmarks')" style="cursor: pointer;" title="Смотреть сравнительные бенчмарки скорости">
           <div class="feature-box__icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon></svg>
           </div>
           <div class="feature-box__title" id="txt-feat-speed-title">Мгновенный запуск и JIT</div>
-          <div class="feature-box__desc" id="txt-feat-speed-desc">Высокопроизводительная регистровая виртуальная машина и компиляция в автономные бинарники с нулевыми зависимостями.</div>
+          <div class="feature-box__desc" id="txt-feat-speed-desc">Высокопроизводительная регистровая виртуальная машина и JIT-компилятор. Нажмите для перехода к бенчмаркам →</div>
         </div>
         <div class="feature-box" onclick="navigate('docs', 'apm')" style="cursor: pointer;" title="Открыть документацию APM">
           <div class="feature-box__icon">
@@ -2205,6 +2205,76 @@
           </div>
           <div class="feature-box__title" id="txt-feat-cross-title">Кросс-компиляция</div>
           <div class="feature-box__desc" id="txt-feat-cross-desc">Сборка под Windows, Linux и macOS одной командой прямо с вашей рабочей машины без установки сторонних SDK.</div>
+        </div>
+      </div>
+
+      <!-- Why Alca Comparison Section -->
+      <div class="why-alca-card" style="margin-top: 30px; background: #ffffff; border: 1px solid var(--border-card); border-radius: 8px; padding: 28px; box-shadow: 0 1px 3px rgba(0,0,0,0.04);">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px; margin-bottom: 20px;">
+          <div>
+            <div style="display:inline-flex; align-items:center; gap:6px; background:#eff6ff; color:#1d4ed8; font-size:11.5px; font-weight:700; padding:3px 10px; border-radius:12px; margin-bottom:8px; border:1px solid #bfdbfe;">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+              <span id="txt-why-alca-badge">ВЫБОР ЯЗЫКА</span>
+            </div>
+            <h2 style="font-size: 22px; font-weight: 700; color: #0f172a; line-height: 1.25;" id="txt-why-alca-title">
+              Зачем Alca, а не Python, Go или Deno?
+            </h2>
+            <p style="font-size: 14px; color: #64748b; margin-top: 4px; max-width: 720px;" id="txt-why-alca-subtitle">
+              Разработчику больше не нужно жертвовать лаконичностью синтаксиса ради статической типизации или тянуть 50 МБ браузерного движка ради скриптов.
+            </p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button type="button" class="btn btn-primary" onclick="navigate('docs', 'why-alca')" id="txt-why-alca-read-btn">
+              Читать полное сравнение →
+            </button>
+            <button type="button" class="btn btn-outline" onclick="navigate('docs', 'benchmarks')" id="txt-why-alca-bench-btn">
+              Смотреть бенчмарки
+            </button>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <!-- vs Python -->
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+              <span style="font-weight:700; font-size:16px; color:#0f172a;">Alca vs Python</span>
+            </div>
+            <p style="font-size: 13.5px; color: #475569; line-height: 1.5; margin-bottom: 12px;" id="txt-why-py-desc">
+              <strong>Общее:</strong> Чистый синтаксис на отступах, срезы, f-строки и списковые включения.<br>
+              <strong>Преимущества Alca:</strong> В 10–35 раз быстрее, <strong>нет GIL</strong> (потоки на всех ядрах), статическая типизация с автовыводом и компиляция в <strong>один переносимый .exe</strong> без virtualenv.
+            </p>
+            <div style="font-family: var(--font-mono); font-size: 11.5px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 4px; padding: 6px 10px; color: #0284c7;">
+              [x * 2 for x in items] · no GIL · 3ms start
+            </div>
+          </div>
+
+          <!-- vs Go -->
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+              <span style="font-weight:700; font-size:16px; color:#0f172a;">Alca vs Go</span>
+            </div>
+            <p style="font-size: 13.5px; color: #475569; line-height: 1.5; margin-bottom: 12px;" id="txt-why-go-desc">
+              <strong>Общее:</strong> 1 автономный бинарник, строгая типизация, мгновенный холодный старт.<br>
+              <strong>Преимущества Alca:</strong> Нет шаблонного кода <code>if err != nil</code>, нативные пайплайны <code>data |> filter |> map</code>, мощный <code>match</code>, кортежи и мягкая обработка ошибок.
+            </p>
+            <div style="font-family: var(--font-mono); font-size: 11.5px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 4px; padding: 6px 10px; color: #0284c7;">
+              data |> filter(fn) · match val · try/catch
+            </div>
+          </div>
+
+          <!-- vs Deno / Node.js -->
+          <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 20px;">
+            <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px;">
+              <span style="font-weight:700; font-size:16px; color:#0f172a;">Alca vs Deno / Node</span>
+            </div>
+            <p style="font-size: 13.5px; color: #475569; line-height: 1.5; margin-bottom: 12px;" id="txt-why-deno-desc">
+              <strong>Общее:</strong> Модель безопасности, встроенное форматирование и менеджер пакетов.<br>
+              <strong>Преимущества Alca:</strong> Не тянет тяжелый 50 МБ движок V8 Chromium, потребляет всего <strong>~2.8 МБ памяти</strong> вместо 60 МБ, стартует за <strong>3 миллисекунды</strong> вместо 80 мс, а песочница встроена в ядро ВМ.
+            </p>
+            <div style="font-family: var(--font-mono); font-size: 11.5px; background: #ffffff; border: 1px solid #cbd5e1; border-radius: 4px; padding: 6px 10px; color: #0284c7;">
+              2.8MB RSS · 3.1ms boot · core sandbox
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -2597,6 +2667,14 @@
       apmCmd2: "Создание библиотеки",
       apmCmd3: "Публикация в реестр",
       apmCmd4: "Авторизация в реестре",
+      whyAlcaBadge: "ВЫБОР ЯЗЫКА",
+      whyAlcaTitle: "Зачем Alca, а не Python, Go или Deno?",
+      whyAlcaSubtitle: "Разработчику больше не нужно жертвовать лаконичностью синтаксиса ради статической типизации или тянуть 50 МБ браузерного движка ради скриптов.",
+      whyAlcaReadBtn: "Читать полное сравнение →",
+      whyAlcaBenchBtn: "Смотреть бенчмарки",
+      whyPyDesc: "<strong>Общее:</strong> Чистый синтаксис на отступах, срезы, f-строки и списковые включения.<br><strong>Преимущества Alca:</strong> В 10–35 раз быстрее, <strong>нет GIL</strong> (потоки на всех ядрах), статическая типизация с автовыводом и компиляция в <strong>один переносимый .exe</strong> без virtualenv.",
+      whyGoDesc: "<strong>Общее:</strong> 1 автономный бинарник, строгая типизация, мгновенный холодный старт.<br><strong>Преимущества Alca:</strong> Нет шаблонного кода <code>if err != nil</code>, нативные пайплайны <code>data |> filter |> map</code>, мощный <code>match</code>, кортежи и мягкая обработка ошибок.",
+      whyDenoDesc: "<strong>Общее:</strong> Модель безопасности, встроенное форматирование и менеджер пакетов.<br><strong>Преимущества Alca:</strong> Не тянет тяжелый 50 МБ движок V8 Chromium, потребляет всего <strong>~2.8 МБ памяти</strong> вместо 60 МБ, стартует за <strong>3 миллисекунды</strong> вместо 80 мс, а песочница встроена в ядро ВМ.",
 
       docTitle: "Alca Lang · Язык программирования и пакетный менеджер APM",
       skipContent: "Перейти к основному содержимому",
@@ -2717,6 +2795,14 @@
       apmCmd2: "New Library",
       apmCmd3: "Publish Package",
       apmCmd4: "Registry Login",
+      whyAlcaBadge: "LANGUAGE CHOICE",
+      whyAlcaTitle: "Why Alca over Python, Go, or Deno?",
+      whyAlcaSubtitle: "You no longer need to sacrifice syntactic elegance for static typing, or endure 50MB of browser runtime just to run utilities.",
+      whyAlcaReadBtn: "Read Detailed Comparison →",
+      whyAlcaBenchBtn: "View Benchmarks",
+      whyPyDesc: "<strong>Common:</strong> Pythonic indentation, slices, f-strings, and list comprehensions.<br><strong>Alca Advantages:</strong> 10x to 35x faster execution, <strong>zero GIL</strong> (full linear scaling across CPU cores), static type safety, and compilation into a <strong>single portable .exe</strong> with zero dependencies.",
+      whyGoDesc: "<strong>Common:</strong> 1 standalone binary, strict types, instant startup.<br><strong>Alca Advantages:</strong> Eliminates repetitive <code>if err != nil</code> boilerplate, features native pipelines <code>data |> filter |> map</code>, pattern matching, and expressive error streams.",
+      whyDenoDesc: "<strong>Common:</strong> Security permissions, built-in tooling, and modern ecosystem.<br><strong>Alca Advantages:</strong> No 50MB V8 engine bloat, consumes only <strong>~2.8 MB memory</strong>, cold boots in <strong>3.1 milliseconds</strong>, with core-level capability enforcement.",
 
       docTitle: "Alca Lang · Programming Language & APM Package Manager",
       skipContent: "Skip to main content",
@@ -2887,6 +2973,14 @@
     setTxt('txt-apm-cmd2-title', t('apmCmd2'));
     setTxt('txt-apm-cmd3-title', t('apmCmd3'));
     setTxt('txt-apm-cmd4-title', t('apmCmd4'));
+    setTxt('txt-why-alca-badge', t('whyAlcaBadge'));
+    setTxt('txt-why-alca-title', t('whyAlcaTitle'));
+    setTxt('txt-why-alca-subtitle', t('whyAlcaSubtitle'));
+    setTxt('txt-why-alca-read-btn', t('whyAlcaReadBtn'));
+    setTxt('txt-why-alca-bench-btn', t('whyAlcaBenchBtn'));
+    setTxt('txt-why-py-desc', t('whyPyDesc'), true);
+    setTxt('txt-why-go-desc', t('whyGoDesc'), true);
+    setTxt('txt-why-deno-desc', t('whyDenoDesc'), true);
     setTxt('txt-matrix-title', t('matrixTitle'));
     setTxt('txt-matrix-subtitle', t('matrixSubtitle'));
     setTxt('txt-toc-title', t('tocTitle'));
@@ -3024,11 +3118,47 @@
   }
 
   function copyText(txt) {
-    navigator.clipboard.writeText(txt).then(() => {
-      showToast(t('copiedToast') + txt);
-    }).catch(() => {
-      alert(txt);
-    });
+    if (!txt) return;
+    txt = String(txt).trim();
+    // 1. Try modern Async Clipboard API first if in secure context
+    if (window.isSecureContext && navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(txt).then(() => {
+        showToast(t('copiedToast') + txt);
+      }).catch(() => {
+        fallbackCopy(txt);
+      });
+      return;
+    }
+    // 2. Reliable cross-browser fallback using temporary textarea (works over plain HTTP)
+    fallbackCopy(txt);
+  }
+
+  function fallbackCopy(txt) {
+    try {
+      const textArea = document.createElement("textarea");
+      textArea.value = txt;
+      textArea.setAttribute('readonly', '');
+      textArea.style.position = "fixed";
+      textArea.style.top = "-9999px";
+      textArea.style.left = "-9999px";
+      textArea.style.opacity = "0";
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      const success = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      if (success) {
+        showToast(t('copiedToast') + txt);
+        return;
+      }
+    } catch (e) {
+      console.warn("fallback copy failed:", e);
+    }
+    prompt(state.lang === 'ru' ? 'Скопируйте команду вручную (Ctrl+C):' : 'Copy command manually (Ctrl+C):', txt);
+  }
+
+  function copySnippet(txt) {
+    copyText(txt);
   }
 
 
