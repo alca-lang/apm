@@ -22,7 +22,7 @@ import (
 	"golang.org/x/term"
 
 	"github.com/alca-lang/apm/pkg/apm"
-	"github.com/alca-lang/alca/pkg/version"
+	"github.com/alca-lang/apm/pkg/version"
 )
 
 const usage = `APM - the Alca package manager

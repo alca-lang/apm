@@ -20,7 +20,7 @@ import (
 	"github.com/alca-lang/alca/pkg/lexer"
 	"github.com/alca-lang/alca/pkg/parser"
 	"github.com/alca-lang/alca/pkg/typecheck"
-	"github.com/alca-lang/alca/pkg/version"
+	"github.com/alca-lang/apm/pkg/version"
 	"github.com/alca-lang/alca/pkg/vm"
 )
 

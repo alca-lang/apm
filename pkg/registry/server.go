@@ -145,6 +145,8 @@ func parseLevel(name string) slog.Level {
 func (s *Server) routes() {
 	s.mux.HandleFunc("GET /healthz", s.handleHealth)
 	s.mux.HandleFunc("GET /assets/logo.svg", s.handleLogo)
+	s.mux.HandleFunc("GET /assets/alca-file.ico", s.handleFileICO)
+	s.mux.HandleFunc("GET /assets/alca-file.png", s.handleFilePNG)
 
 	// Web pages & Single Page Application routes
 	s.mux.HandleFunc("GET /{$}", s.handleIndex)

@@ -24,7 +24,7 @@ import (
 	"syscall"
 
 	"github.com/alca-lang/apm/pkg/registry"
-	"github.com/alca-lang/alca/pkg/version"
+	"github.com/alca-lang/apm/pkg/version"
 )
 
 func main() {
