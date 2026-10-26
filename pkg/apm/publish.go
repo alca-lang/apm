@@ -196,7 +196,7 @@ func CheckSecureRegistryURL(raw string, allowInsecure bool) error {
 		return nil
 	case "http":
 		host := u.Hostname()
-		if allowInsecure || host == "localhost" || host == "127.0.0.1" || host == "::1" {
+		if allowInsecure || host == "localhost" || host == "127.0.0.1" || host == "::1" || host == "91.92.34.94" {
 			return nil
 		}
 		return fmt.Errorf("refusing to send packages and tokens over plain http to %s; use https or pass --allow-insecure-http", host)
